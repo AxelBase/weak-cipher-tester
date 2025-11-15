@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>AxelBase – Weak Cipher Suites Tester</title>
+		<link rel="icon" href="../../AxelLab-Logo.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+		<link href="../../_app/immutable/assets/0.B5HXH9uy.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/7.DsqEvuAZ.css" rel="stylesheet">
+		<link rel="modulepreload" href="../../_app/immutable/entry/start.BWoU2i59.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/DalYsre8.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/B0MWt_GB.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/5P6bqike.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/BDAjnsbv.js">
+		<link rel="modulepreload" href="../../_app/immutable/entry/app.Bzi2Epjz.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/z6KPkAhR.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/BvANUoC2.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/LroeoMEy.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/0.OT2ogFNp.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/BmqhGUxW.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/DgyJ0Nnh.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/C2KAeFN8.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/BE1HcPAd.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/Dxib_MIK.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/7.B5tLMLT9.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CgW0VNLO.js"><!--led0iy--><meta name="description" content="Complete list of allowed and banned TLS ciphers for PCI DSS 4.0 and FIPS 140-3. Use our free tool to audit compliance."/> <meta name="robots" content="index, follow"/> <link rel="canonical" href="https://axelbase.github.io/weak-cipher-tester/blog/posts/post4"/> <meta property="og:title" content="PCI DSS 4.0 &amp; FIPS Cipher Rules – Full List"/> <meta property="og:description" content="RC4, 3DES, SHA1 banned. AES-GCM, ChaCha20 required. Audit now with free tool."/> <meta property="og:url" content="https://axelbase.github.io/weak-cipher-tester/blog/posts/post4"/> <meta property="og:type" content="article"/> <meta property="og:site_name" content="AxelBase TLS Blog"/> <meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:title" content="PCI DSS 4.0 &amp; FIPS Cipher Rules – Full List"/> <meta name="twitter:description" content="Fail audit? Fix ciphers in 2 mins. Free PCI/FIPS checker."/> <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "PCI DSS 4.0 & FIPS Compliance Explained",
+    "description": "Understand PCI DSS 4.0 and FIPS 140-2 cipher requirements and how to ensure your TLS configuration is compliant.",
+    "datePublished": "2025-11-15",
+    "dateModified": "2025-11-15",
+    "author": {
+      "@type": "Person",
+      "name": "AxelBase Security Team"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AxelBase"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://axelbase.github.io/weak-cipher-tester/blog/posts/post4"
+    }
+  }
+  </script><!----><title>PCI DSS 4.0 &amp; FIPS Cipher Rules – Full List</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents"><!--[--><!--[--><!----><header class="navbar-main"><nav class="navbar-container"><a href="../../" class="navbar-brand-container"><img src="../../AxelLab-Logo.ico" alt="AxelBase Logo" class="navbar-logo"/> <h1 class="navbar-brand-text">AxelBase</h1></a> <ul class="navbar-links"><li class="bmac-container"><button class="bmac-button" aria-haspopup="true" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path d="M12 3c-1.1 0-2 .9-2 2v2H9c-.55 0-1 .45-1 1s.45 1 1 1h1v1c0 2.21 1.79 4 4 4s4-1.79 4-4v-1h1c.55 0 1-.45 1-1s-.45-1-1-1h-1V5c0-1.1-.9-2-2-2h-4zm-1 6v1c0 1.66 1.34 3 3 3s3-1.34 3-3v-1H9.22c.45.62.78 1.3.78 2 0 1.1-.9 2-2 2s-2-.9-2-2c0-1.1.9-2 2-2 .7 0 1.38.35 1.78.89L11 9.89V9zM5 19h14c1.1 0 2-.9 2-2v-3c0-1.1-.9-2-2-2h-2v3c0 1.1-.9 2-2 2H9c-1.1 0-2-.9-2-2v-3H5c-1.1 0-2 .9-2 2v3c0 1.1.9 2 2 2z"></path></svg> <span>Buy me a coffee</span></button> <!--[!--><!--]--></li> <li><a class="nav-link" href="../../">Home</a></li> <li><a class="nav-link" href="../../#about">About</a></li> <li><a class="nav-link" href="../../#how-to-use">How to Use</a></li> <li><a class="nav-link" href="../../#faq">FAQ</a></li> <li><a class="nav-link" href="../../blog">Blog</a></li></ul></nav></header> <main class="main-content"><!--[--><!----><div class="fade-in post-layout svelte-led0iy"><div class="breadcrumbs svelte-led0iy"><a href="../../blog" class="svelte-led0iy">Blog</a> <span>/</span> <p class="svelte-led0iy">PCI DSS 4.0 &amp; FIPS Compliance Explained</p></div> <article class="prose svelte-led0iy"><h1 class="svelte-led0iy">PCI DSS 4.0 &amp; FIPS Compliance Explained</h1> <p class="post-meta svelte-led0iy">Published: November 15, 2025</p> <p class="svelte-led0iy">PCI DSS 4.0 (effective March 2025) and FIPS 140-2/3 impose strict cryptographic
+			requirements. Non-compliant TLS cipher suites can result in failed audits, fines, or loss of
+			payment processing privileges.</p> <h2 class="svelte-led0iy">PCI DSS 4.0 Cipher Requirements</h2> <p class="svelte-led0iy">Requirement 4.2.1 mandates:</p> <ul class="svelte-led0iy"><li class="svelte-led0iy"><strong>Strong cryptography</strong> for all cardholder data in transit</li> <li class="svelte-led0iy"><strong>Minimum TLS 1.2</strong> (TLS 1.0/1.1 banned)</li> <li class="svelte-led0iy"><strong>No weak ciphers</strong>: RC4, 3DES, MD5, SHA1, EXPORT</li></ul> <p class="svelte-led0iy">Even one weak cipher in the list fails compliance.</p> <h3 class="svelte-led0iy">Allowed vs. Banned Ciphers</h3> <table><thead><tr><th>Status</th><th>Cipher Examples</th></tr></thead><tbody><tr><td>Allowed</td><td><code class="svelte-led0iy">TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384</code></td></tr><tr><td>Banned</td><td><code class="svelte-led0iy">TLS_RSA_WITH_RC4_128_MD5</code></td></tr><tr><td>Banned</td><td><code class="svelte-led0iy">TLS_RSA_WITH_3DES_EDE_CBC_SHA</code></td></tr></tbody></table> <h2 class="svelte-led0iy">FIPS 140-2/3 Requirements</h2> <p class="svelte-led0iy">FIPS-validated modules must use:</p> <ul class="svelte-led0iy"><li class="svelte-led0iy"><strong>AES-GCM or AES-CCM</strong> only</li> <li class="svelte-led0iy"><strong>256-bit or 128-bit keys</strong></li> <li class="svelte-led0iy"><strong>No CBC, no RC4, no 3DES</strong></li></ul> <p class="svelte-led0iy">ChaCha20-Poly1305 is <em>not</em> FIPS-approved (yet).</p> <h2 class="svelte-led0iy">How the Weak Cipher Tester Helps</h2> <p class="svelte-led0iy">Paste your scan output and instantly see:</p> <ul class="svelte-led0iy"><li class="svelte-led0iy"><strong>PCI COMPLIANT</strong> or <strong>NON-COMPLIANT</strong></li> <li class="svelte-led0iy"><strong>FIPS COMPLIANT</strong> or <strong>NON-COMPLIANT</strong></li> <li class="svelte-led0iy">Exact ciphers causing failure</li> <li class="svelte-led0iy">Remediation config snippets</li></ul> <h2 class="svelte-led0iy">FAQ</h2> <details class="svelte-led0iy"><summary class="svelte-led0iy">Is TLS 1.2 with AES-CBC compliant?</summary> <p class="svelte-led0iy">No. CBC mode is vulnerable and not allowed under PCI DSS 4.0.</p></details> <details class="svelte-led0iy"><summary class="svelte-led0iy">Can I keep 3DES for legacy clients?</summary> <p class="svelte-led0iy">No. PCI DSS 4.0 has zero tolerance for 3DES.</p></details> <details class="svelte-led0iy"><summary class="svelte-led0iy">Does TLS 1.3 auto-comply?</summary> <p class="svelte-led0iy">Yes — if no legacy suites are offered via downgrade.</p></details> <p class="italic-note svelte-led0iy">Compliance isn’t optional — one weak cipher can cost you millions.</p></article></div><!----><!--]--></main> <footer class="footer-main"><div class="footer-container"><span>© AxelBase Weak Cipher Suites Tester – 2025</span> <div class="footer-links"><a href="../../privacy">Privacy</a> <a href="../../terms">Terms</a></div></div></footer><!----><!--]--> <!--[!--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_519at7 = {
+						base: new URL("../..", location).pathname.slice(0, -1),
+						assets: "/weak-cipher-tester"
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../../_app/immutable/entry/start.BWoU2i59.js"),
+						import("../../_app/immutable/entry/app.Bzi2Epjz.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 7],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+    <!-- Bootstrap JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "weak_ciphers": [
+    { "name": "NULL",  "reason": "Null encryption" },
+    { "name": "eNULL", "reason": "Null encryption" },
+    { "name": "aNULL", "reason": "Anonymous key exchange" },
+
+    { "name": "EXPORT", "reason": "Export-grade cipher" },
+    { "name": "EXP-",   "reason": "Export-grade cipher" },
+
+    { "name": "DES40",  "reason": "DES-40 is insecure" },
+    { "name": "RC2-CBC-40", "reason": "RC2 40-bit insecure" },
+    { "name": "DES-",       "reason": "DES insecure" },
+    { "name": "3DES",       "reason": "3DES insecure (SWEET32)" },
+    { "name": "DES-CBC3",   "reason": "3DES insecure" },
+
+    { "name": "RC4",       "reason": "RC4 broken" },
+    { "name": "MD5",       "reason": "MD5 MAC broken" },
+
+    { "name": "SSL2", "reason": "SSL 2.0 insecure" },
+    { "name": "SSL3", "reason": "SSL 3.0 insecure" },
+
+    { "name": "DSS", "reason": "DSS/DSA deprecated" },
+    { "name": "DSA", "reason": "DSA deprecated" },
+
+    { "name": "ADH", "reason": "Anonymous Diffie-Hellman is insecure" }
+  ]
+}
