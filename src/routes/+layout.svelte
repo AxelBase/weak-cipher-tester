@@ -1,91 +1,168 @@
 <script lang="ts">
-	import { base } from '$app/paths';
-	import { fly } from 'svelte/transition';
-	import '../app.css'; // Import the new global stylesheet
+    import { base } from '$app/paths';
+    import { fly } from 'svelte/transition';
+    import '../app.css';
 
-	// --- Buy Me a Coffee Logic ---
-	const paypalUsername = 'AxelLab427'; // <-- TODO: Update this
-	const donationAmounts = [1, 3, 5, 10];
-	let isDropdownOpen = false;
+    // --- Buy Me a Coffee Logic (from File 1 - BuyMeACoffee + Bitcoin) ---
+    let isDropdownOpen = false;
 
-	function toggleDropdown() {
-		isDropdownOpen = !isDropdownOpen;
-	}
-	function closeDropdown() {
-		isDropdownOpen = false;
-	}
+    function toggleDropdown() {
+        isDropdownOpen = !isDropdownOpen;
+    }
+    function closeDropdown() {
+        isDropdownOpen = false;
+    }
 
-	// Click outside directive
-	function clickOutside(node: HTMLElement) {
-		const handleClick = (event: MouseEvent) => {
-			if (node && !node.contains(event.target as Node)) {
-				// Use dispatchEvent to trigger the svelte 'on:click_outside'
-				node.dispatchEvent(new CustomEvent('click_outside'));
-			}
-		};
-		document.addEventListener('click', handleClick, true);
-		return {
-			destroy() {
-				document.removeEventListener('click', handleClick, true);
-			}
-		};
-	}
+    // Click outside directive
+    function clickOutside(node: HTMLElement) {
+        const handleClick = (event: MouseEvent) => {
+            if (node && !node.contains(event.target as Node)) {
+                node.dispatchEvent(new CustomEvent('click_outside'));
+            }
+        };
+        document.addEventListener('click', handleClick, true);
+        return {
+            destroy() {
+                document.removeEventListener('click', handleClick, true);
+            }
+        };
+    }
 </script>
 
 <header class="navbar-main">
-	<nav class="navbar-container">
-		<a href="{base}/" class="navbar-brand-container">
-			<img src="{base}/AxelLab-Logo.ico" alt="AxelBase Logo" class="navbar-logo" />
-			<h1 class="navbar-brand-text">AxelBase</h1>
-		</a>
+    <nav class="navbar-container">
+        <a href="{base}/" class="navbar-brand-container">
+            <img src="{base}/AxelLab-Logo.ico" alt="AxelBase Logo" class="navbar-logo" />
+            <h1 class="navbar-brand-text">AxelBase</h1>
+        </a>
 
-		<ul class="navbar-links">
-			<li class="bmac-container" use:clickOutside on:click_outside={closeDropdown}>
-				<button class="bmac-button" on:click={toggleDropdown} aria-haspopup="true" aria-expanded={isDropdownOpen}>
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-						<path fill="none" d="M0 0h24v24H0z" />
-						<path
-							d="M12 3c-1.1 0-2 .9-2 2v2H9c-.55 0-1 .45-1 1s.45 1 1 1h1v1c0 2.21 1.79 4 4 4s4-1.79 4-4v-1h1c.55 0 1-.45 1-1s-.45-1-1-1h-1V5c0-1.1-.9-2-2-2h-4zm-1 6v1c0 1.66 1.34 3 3 3s3-1.34 3-3v-1H9.22c.45.62.78 1.3.78 2 0 1.1-.9 2-2 2s-2-.9-2-2c0-1.1.9-2 2-2 .7 0 1.38.35 1.78.89L11 9.89V9zM5 19h14c1.1 0 2-.9 2-2v-3c0-1.1-.9-2-2-2h-2v3c0 1.1-.9 2-2 2H9c-1.1 0-2-.9-2-2v-3H5c-1.1 0-2 .9-2 2v3c0 1.1.9 2 2 2z"
-						/>
-					</svg>
-					<span>Buy me a coffee</span>
-				</button>
+        <ul class="navbar-links">
+            <li class="bmac-container" use:clickOutside on:click_outside={closeDropdown}>
+                <button
+                    class="bmac-button d-flex align-items-center gap-2 text-white border-0 px-4 py-2 rounded-pill shadow-sm"
+                    on:click={toggleDropdown}
+                    aria-haspopup="true"
+                    aria-expanded={isDropdownOpen}
+                    aria-label="Support options"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M2,21V19H20V21H2M20,8V5H4V8H20M20,10H4V13C4,14.38 4.5,15.63 5.31,16.58L11.64,19H12.36L18.69,16.58C19.5,15.63 20,14.38 20,13V10M16,2H8V4H16V2Z" />
+                    </svg>
+                    <span class="d-none d-sm-inline fw-semibold">Buy me a Coffee</span>
+                </button>
 
-				{#if isDropdownOpen}
-					<div class="bmac-dropdown" transition:fly={{ y: -10, duration: 250 }}>
-						{#each donationAmounts as amount}
-							<a
-								href="https://paypal.me/{paypalUsername}/{amount}"
-								target="_blank"
-								rel="noopener noreferrer"
-								on:click={closeDropdown}
-							>
-								${amount}
-							</a>
-						{/each}
-					</div>
-				{/if}
-			</li>
+                {#if isDropdownOpen}
+                    <div class="bmac-dropdown mt-2" transition:fly={{ y: -10, duration: 250 }}>
+                        <a href="https://buymeacoffee.com/axelbase" target="_blank" rel="noopener" on:click={closeDropdown}>
+                            <span class="amount">$3</span> One Coffee
+                        </a>
+                        <a href="https://buymeacoffee.com/axelbase" target="_blank" rel="noopener" on:click={closeDropdown}>
+                            <span class="amount">$5</span> Two Coffees
+                        </a>
+                        <a href="https://buymeacoffee.com/axelbase" target="_blank" rel="noopener" on:click={closeDropdown}>
+                            <span class="amount">$10</span> Three Coffees
+                        </a>
 
-			<li><a class="nav-link" href="{base}/">Home</a></li>
-			<li><a class="nav-link" href="{base}/#about">About</a></li>
-			<li><a class="nav-link" href="{base}/#how-to-use">How to Use</a></li>
-			<li><a class="nav-link" href="{base}/#faq">FAQ</a></li>
-			<li><a class="nav-link" href="{base}/blog">Blog</a></li>
-		</ul>
-	</nav>
+                        <a href="https://buymeacoffee.com/axelbase" target="_blank" rel="noopener" on:click={closeDropdown} class="custom-amount">
+                            Custom Amount
+                        </a>
+
+                        <a
+                            href="bitcoin:bc1q3p0e6vt492m4w4fpz5m2cl4zcfuqqkgaj6myc9?label=AxelBase&message=Buy%20me%20a%20coffee"
+                            on:click={closeDropdown}
+                            class="custom-amount"
+                        >
+                            Buy via Crypto (Bitcoin)
+                        </a>
+                    </div>
+                {/if}
+            </li>
+
+            <li><a class="nav-link" href="{base}/">Home</a></li>
+            <li><a class="nav-link" href="{base}/#about">About</a></li>
+            <li><a class="nav-link" href="{base}/#how-to-use">How to Use</a></li>
+            <li><a class="nav-link" href="{base}/#faq">FAQ</a></li>
+            <li><a class="nav-link" href="{base}/blog">Blog</a></li>
+        </ul>
+    </nav>
 </header>
 
 <main class="main-content">
-	<slot />
+    <slot />
 </main>
 
 <footer class="footer-main">
-	<div class="footer-container">
-		<span>© AxelBase Weak Cipher Suites Tester – {new Date().getFullYear()}</span>
-		<div class="footer-links">
-			<a href="{base}/privacy">Privacy</a>
-			<a href="{base}/terms">Terms</a>
-		</div>
-	</div>
+    <div class="footer-container">
+        <span>© AxelBase Weak Cipher Suites Tester – {new Date().getFullYear()}</span>
+        <div class="footer-links">
+            <a href="{base}/privacy">Privacy</a>
+            <a href="{base}/terms">Terms</a>
+        </div>
+    </div>
 </footer>
+
+<style>
+    /* Button styles kept from File 1, adapted to File 2's chestnut/gold theme */
+    .bmac-button {
+        background: var(--primary-brand); /* #f0c040 gold */
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .bmac-button:hover {
+        background: linear-gradient(145deg, #fadf7a, #eab04c); /* lighter gold hover */
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(99, 58, 52, 0.2);
+    }
+
+    /* Dropdown styles from File 1, adapted to File 2's light theme */
+    .bmac-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 240px;
+        background: var(--white);
+        border-radius: 16px;
+        box-shadow: 0 12px 32px rgba(99, 58, 52, 0.15); /* chestnut-tinted shadow */
+        overflow: hidden;
+        border: 1px solid rgba(99, 58, 52, 0.1);
+        z-index: 1001;
+    }
+
+    .bmac-dropdown a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 20px;
+        color: var(--text-dark);
+        text-decoration: none;
+        font-size: 0.98rem;
+        transition: all 0.2s ease;
+    }
+
+    .bmac-dropdown a:hover {
+        background: rgba(240, 192, 64, 0.15); /* light gold background */
+        color: var(--chestnut);
+        padding-left: 28px;
+    }
+
+    .bmac-dropdown .amount {
+        font-weight: 700;
+        color: var(--primary-brand);
+        font-size: 1.1rem;
+    }
+
+    .bmac-dropdown .custom-amount {
+        font-weight: 600;
+        color: var(--chestnut);
+        border-top: 1px solid var(--border-color);
+        justify-content: center !important;
+    }
+
+    .bmac-dropdown .custom-amount:hover {
+        background: rgba(240, 192, 64, 0.15);
+        color: var(--chestnut);
+    }
+</style>
