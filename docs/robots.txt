@@ -1,8 +1,4 @@
 User-agent: *
 Allow: /
 
-Disallow: /src/
-Disallow: /lib/
-Disallow: /node_modules/
-
-Sitemap: https://https://axelbase.github.io/weak-cipher-tester/sitemap.xml
+Sitemap: https://weak-cipher-tester.vercel.app/sitemap.xml
